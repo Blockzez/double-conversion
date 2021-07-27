@@ -1,3 +1,7 @@
+# Double Conversion Module
+A double conversion module for Luau based off Google's double conversion.
+
+
 <table>
 <thead><tr><th>Contents</th></tr></thead>
 <tbody><tr><td>
@@ -22,20 +26,26 @@ The double to string converter class.
 [DoubleToStringConverter.Flags]: #user-content-doubletostringconverterflags
 The possible bit combination of the flags enum:
 	NO_FLAGS - No flags
+	
 	EMIT_POSITIVE_EXPONENT_SIGN - When the number is in the exponential format,
 	it emits the "+" sign for positive exponents.
+	
 	EMIT_TRAILING_DECIMAL_POINT - When the number is in the decimal format,
 	it emits a trailing decimal point ".".
+	
 	EMIT_TRAILING_ZERO_AFTER_POINT - When the number is in the decimal format,
 	it emits a trailing "0" after the point, EMIT_TRAILING_DECIMAL_POINT must
 	be enabled
-	UNIQUE_ZERO - -0.0 does not display the minus sign "-"
+	
+	UNIQUE_ZERO - -0 does not display the minus sign "-"
 
 ### DoubleToStringConverter.Format
 [DoubleToStringConverter.Format]: #user-content-doubletostringconverterformat
 The format for its string representation:
 	AUTO - Print the value in the decimal format if it's in the range of \[10^decimal_in_shortest_low; 10^decimal_in_shortest_high\[
+	
 	DECIAML - Print the value in the decimal format
+	
 	EXPONENTIAL - Print the value in the exponential format
 
 ### DoubleToStringConverter.new
@@ -105,3 +115,16 @@ function DoubleToDecimalConverter.ToExact(value: number): ({ number }?, number?,
 
 Returns the exact decimal representation of double converted to decimal in array of table
 with the length and scale by the power of ten
+
+
+## DecimalToDoubleConverter
+[DecimalToDoubleConverter]: #user-content-decimaltodoubleconverter
+
+### DecimalToDoubleConverter.ToDouble
+[DecimalToDoubleConverter.ToDouble]: #user-content-decimaltodoubletodouble
+
+```lua
+function DecimalToDoubleConverter.ToDouble(value: { number }, scale: number?, i: number?, j: number?): number?
+```
+
+Converts decimal array from i to j to a double with scale in power of tens

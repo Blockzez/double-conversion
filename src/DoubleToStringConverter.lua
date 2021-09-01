@@ -97,6 +97,10 @@ local function double_to_ascii(
 			ret = string.char(table.unpack(fmt, 1, math.min(intg_i, fmt_n)))
 				.. string.rep("0", intg_i - fmt_n)
 			
+			if ret == "" then
+				ret = "0"
+			end
+			
 			if fmt_n <= intg_i then
 				if bit32.band(flags, 0x0002) ~= 0 then
 					ret ..= bit32.band(flags, 0x0004) == 0
@@ -228,13 +232,13 @@ function DoubleToStringConverter.new(
 	if type(exponent_symbol) ~= "string" then
 		error("Argument #4 provided must be a string", 2)
 	end
-	decimal_in_shortest_low = tonumber(flags)
+	decimal_in_shortest_low = tonumber(decimal_in_shortest_low)
 	if not decimal_in_shortest_low then
 		error("Argument #5 provided must be a number", 2)
 	elseif decimal_in_shortest_low <= -1000 or decimal_in_shortest_low >= 1000 then
 		error("Argument #5 provided must be in the bounds of -999 to 999", 2)
 	end
-	decimal_in_shortest_high = tonumber(flags)
+	decimal_in_shortest_high = tonumber(decimal_in_shortest_high)
 	if not decimal_in_shortest_high then
 		error("Argument #6 provided must be a number", 2)
 	elseif decimal_in_shortest_high <= -1000 or decimal_in_shortest_high >= 1000 then

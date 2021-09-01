@@ -18,6 +18,8 @@ A double conversion module for Luau based off Google's double conversion.
 3. [DecimalToDoubleConverter][DecimalToDoubleConverter]
 	1. [DecimalToDoubleConverter.ToDouble][DecimalToDoubleConverter.ToDouble]
 
+</td></tr></tbody>
+
 ## DoubleToStringConverter
 [DoubleToStringConverter]: #user-content-doubletostringconverter
 The double to string converter class.
@@ -121,7 +123,7 @@ with the length and scale by the power of ten
 [DecimalToDoubleConverter]: #user-content-decimaltodoubleconverter
 
 ### DecimalToDoubleConverter.ToDouble
-[DecimalToDoubleConverter.ToDouble]: #user-content-decimaltodoubletodouble
+[DecimalToDoubleConverter.ToDouble]: #user-content-decimaltodoubleconvertertodouble
 
 ```lua
 function DecimalToDoubleConverter.ToDouble(value: { number }, scale: number?, i: number?, j: number?): number?

@@ -180,7 +180,7 @@ function bignum.mul_uint64_t(bnum: BigNum, factor0: number, factor1: number)
 	end
 end
 
-function bignum.from_power(base: number, pow_expt: number)
+function bignum.from_power(base: number, pow_expt: number): BigNum
 	if pow_expt == 0 then
 		return { expt = 0, 1 }
 	end
@@ -196,7 +196,7 @@ function bignum.from_power(base: number, pow_expt: number)
 		bit_size += 1
 	end
 	local final_size = bit_size * pow_expt
-	local ret = table.create(final_size / 28 + 2)
+	local ret = table.create(final_size / 28 + 2) :: BigNum
 	ret.expt = 0
 
 	-- Left to Right exponentiation
@@ -253,7 +253,7 @@ function bignum.compare(a: BigNum, b: BigNum): number
 		return 1
 	end
 	for i = len_a, math.min(a.expt, b.expt) + 1, -1 do
-		local a_i, b_i = a[i] or 0, b[i] or 0
+		local a_i, b_i = a[i - a.expt] or 0, b[i - b.expt] or 0
 		if a_i < b_i then
 			return -1
 		elseif a_i > b_i then
